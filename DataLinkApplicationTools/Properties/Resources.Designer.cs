@@ -59,5 +59,32 @@ namespace DataLinkApplicationTools.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 SOFTWARE\\Microsoft\\InetStp 的本地化字符串。
+        /// </summary>
+        internal static string REG_IISInfoPath {
+            get {
+                return ResourceManager.GetString("REG_IISInfoPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion 的本地化字符串。
+        /// </summary>
+        internal static string REG_OSInfoPath {
+            get {
+                return ResourceManager.GetString("REG_OSInfoPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string REG_SQLInfoPath {
+            get {
+                return ResourceManager.GetString("REG_SQLInfoPath", resourceCulture);
+            }
+        }
     }
 }

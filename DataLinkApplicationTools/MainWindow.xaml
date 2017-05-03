@@ -10,5 +10,9 @@
         <Button Content="Button" HorizontalAlignment="Left" Margin="563,324,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <ListBox x:Name="LB" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="431"/>
         <ListBox x:Name="LB_2" HorizontalAlignment="Left" Height="80" Margin="10,95,0,0" VerticalAlignment="Top" Width="431"/>
+        <ComboBox x:Name="CB" HorizontalAlignment="Left" Margin="468,10,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="CB_SelectionChanged" IsReadOnly="True" SelectedIndex="0">
+            <ComboBoxItem Content="My SQL" HorizontalAlignment="Left" Width="168"/>
+            <ComboBoxItem Content="SQL Server " HorizontalAlignment="Left" Width="168"/>
+        </ComboBox>
     </Grid>
 </Window>

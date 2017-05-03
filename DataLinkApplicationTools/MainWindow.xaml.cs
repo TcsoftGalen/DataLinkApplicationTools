@@ -9,63 +9,30 @@ namespace DataLinkApplicationTools
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
-
+        ComputerInformation cp;
         public MainWindow()
         {
             InitializeComponent();
-
-
+           
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach (NetworkInterface adapter in adapters)
+             cp= new ComputerInformation();
+            LB.Items.Add("系统版本："+cp.OS_ProductName+" "+cp.OS_CurrentBuildNumber);
+            if (cp.OS_InstallationType == "Server")
             {
-                //以太网
-                if (adapter.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
-                {
-                    IPInterfaceProperties ip = adapter.GetIPProperties();
-                    UnicastIPAddressInformationCollection ipCollection = ip.UnicastAddresses;
-                    foreach (UnicastIPAddressInformation ipadd in ipCollection)
-                    {
-                        if (ipadd.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && adapter.OperationalStatus == OperationalStatus.Up)
-                        {
-
-                            switch (adapter.Name)
-                            {
-                                case "以太网":
-                                    LB.Items.Add("名称：" + adapter.Name);
-                                    LB.Items.Add("地址：" + ipadd.Address.ToString());
-                                    LB.Items.Add("状态：" + "已连接");
-                                    break;
-                                case "本地连接1":
-                                    LB_2.Items.Add("名称：" + adapter.Name);
-                                    LB_2.Items.Add("地址：" + ipadd.Address.ToString());
-                                    LB_2.Items.Add("状态：" + "已连接");
-                                    break;
-
-
-                            }
-
-                        }
-                        else
-                        {
-                            
-                        }
-                    }
-                }
-                else
-                {
-                    LB_2.Items.Add(MethodClass.GetSystemVersion());
-                    LB_2.Items.Add(MethodClass.GetIisServerVersion());
-                    LB_2.Items.Add(MethodClass.GetSqlServerVersion(1));
-                    LB_2.Items.Add("名称：" + adapter.Name);                 
-                    LB_2.Items.Add("状态：" + "已连接");
-                }
-                
+                LB.Items.Add("子版本：" + cp.OS_CSDVersion); 
             }
+            LB.Items.Add("系统类型：" + cp.OS_InstallationType);
+            LB.Items.Add("IIS版本："+cp.IIS_ProductString + " " + cp.IIS_VersionString);
+            LB_2.Items.Add(cp.Net_Info);
+        }
+
+        private void CB_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
+
