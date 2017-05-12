@@ -1,6 +1,10 @@
 ﻿using System.Windows;
 using System.Net.NetworkInformation;
 using System.Management;
+using System.Data.SqlClient;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataLinkApplicationTools
 {
@@ -9,30 +13,60 @@ namespace DataLinkApplicationTools
     /// </summary>
     public partial class MainWindow : Window
     {
-        ComputerInformation cp;
+        SynchronizationContext c;
+        PublicTools pt;
+
         public MainWindow()
         {
             InitializeComponent();
-           
+            pt = new PublicTools();
+            SysInfo.Content= pt.GetSystemInfo();
+            c = SynchronizationContext.Current;
+
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+       
+    
+        private void AutoInstallButtomClick(object sender, RoutedEventArgs e)
         {
-             cp= new ComputerInformation();
-            LB.Items.Add("系统版本："+cp.OS_ProductName+" "+cp.OS_CurrentBuildNumber);
-            if (cp.OS_InstallationType == "Server")
+            SynchronizationContext contexrt = SynchronizationContext.Current;
+            LB.Items.Add("线程启动....");
+            Thread thread = new Thread(new ParameterizedThreadStart(ResDB))
             {
-                LB.Items.Add("子版本：" + cp.OS_CSDVersion); 
-            }
-            LB.Items.Add("系统类型：" + cp.OS_InstallationType);
-            LB.Items.Add("IIS版本："+cp.IIS_ProductString + " " + cp.IIS_VersionString);
-            LB_2.Items.Add(cp.Net_Info);
-        }
+                IsBackground = true
+            };
+            thread.Start(contexrt);
+            
+           
 
-        private void CB_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        }
+        private void  ResDB(object sx)
         {
-
+            SynchronizationContext uicon = sx as SynchronizationContext;
+            pt.SwitchDataBase(1);
+            uicon.Send(FlashUI, pt.sql_Result);
+            pt.SwitchDataBase(2);
+            uicon.Send(FlashUI, pt.sql_Result);
+            pt.SwitchDataBase(3);
+            uicon.Send(FlashUI, pt.sql_Result);
+            pt.SwitchDataBase(4);
+            uicon.Send(FlashUI, pt.sql_Result);
+            uicon.Send(FlashUI, "wooooooooooow!");
         }
+
+       private void FlashUI(object str)
+        {
+            string text = str as string;
+            LB.Items.Add(text);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            pt.CreateDir();
+        }
+
+        
+       
     }
 }
 

@@ -79,11 +79,38 @@ namespace DataLinkApplicationTools.Properties {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 123 的本地化字符串。
         /// </summary>
-        internal static string REG_SQLInfoPath {
+        internal static string RESROTE_DATALINK {
             get {
-                return ResourceManager.GetString("REG_SQLInfoPath", resourceCulture);
+                return ResourceManager.GetString("RESROTE_DATALINK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 123 的本地化字符串。
+        /// </summary>
+        internal static string RESROTE_DATALINKCDB {
+            get {
+                return ResourceManager.GetString("RESROTE_DATALINKCDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 123 的本地化字符串。
+        /// </summary>
+        internal static string RESROTE_DATALINKLOG {
+            get {
+                return ResourceManager.GetString("RESROTE_DATALINKLOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 123 的本地化字符串。
+        /// </summary>
+        internal static string RESROTE_DATALINKQC {
+            get {
+                return ResourceManager.GetString("RESROTE_DATALINKQC", resourceCulture);
             }
         }
     }

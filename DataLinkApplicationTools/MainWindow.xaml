@@ -5,14 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataLinkApplicationTools"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="770">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="563,324,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <ListBox x:Name="LB" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="431"/>
-        <ListBox x:Name="LB_2" HorizontalAlignment="Left" Height="80" Margin="10,95,0,0" VerticalAlignment="Top" Width="431"/>
-        <ComboBox x:Name="CB" HorizontalAlignment="Left" Margin="468,10,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="CB_SelectionChanged" IsReadOnly="True" SelectedIndex="0">
-            <ComboBoxItem Content="My SQL" HorizontalAlignment="Left" Width="168"/>
-            <ComboBoxItem Content="SQL Server " HorizontalAlignment="Left" Width="168"/>
-        </ComboBox>
+        Title="MainWindow" Height="600" Width="800" MinWidth="800" MinHeight="600">
+    <Grid Margin="0" HorizontalAlignment="Right" Width="792">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="141" Height="489" Margin="0,80,651,0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF5A69F5" Offset="0"/>
+                    <GradientStop Color="#FFDADDFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Button Content="OverView" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Height="70"/>
+            <Button Content="Auto Install" HorizontalAlignment="Left" Margin="11,75,0,0" VerticalAlignment="Top" Width="120" Height="70" Click="AutoInstallButtomClick"/>
+            <Button Content="Diagnostics" HorizontalAlignment="Left" Margin="11,150,0,0" VerticalAlignment="Top" Width="120" Height="70"/>
+            <Button Content="Tool Kit" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="120" Height="70"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="792">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1025F5" Offset="0"/>
+                    <GradientStop Color="#FF5A69F5" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <GridSplitter HorizontalAlignment="Left" Height="80" Margin="200,0,0,0" VerticalAlignment="Top" Width="4"/>
+            <Label Content="AppLogo&#xD;&#xA;Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="20" Width="185" Height="60" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
+            <Label x:Name="SysInfo" Content="System information" HorizontalAlignment="Left" Margin="209,10,0,10" Width="573"/>
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="707,540,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ListBox x:Name="LB" HorizontalAlignment="Left" Height="362" Margin="146,85,0,0" VerticalAlignment="Top" Width="636"/>
+
     </Grid>
 </Window>

@@ -125,7 +125,16 @@
     <value>SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion</value>
     <comment>system info path</comment>
   </data>
-  <data name="REG_SQLInfoPath" xml:space="preserve">
-    <value />
+  <data name="RESROTE_DATALINK" xml:space="preserve">
+    <value>123</value>
+  </data>
+  <data name="RESROTE_DATALINKCDB" xml:space="preserve">
+    <value>123</value>
+  </data>
+  <data name="RESROTE_DATALINKLOG" xml:space="preserve">
+    <value>123</value>
+  </data>
+  <data name="RESROTE_DATALINKQC" xml:space="preserve">
+    <value>123</value>
   </data>
 </root>
