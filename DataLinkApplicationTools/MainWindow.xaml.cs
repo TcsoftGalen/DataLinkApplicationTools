@@ -26,7 +26,11 @@ namespace DataLinkApplicationTools
         }
 
        
-    
+        /// <summary>
+        /// 一键安装按钮被按下 触发一键安装事件。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AutoInstallButtomClick(object sender, RoutedEventArgs e)
         {
             SynchronizationContext contexrt = SynchronizationContext.Current;
@@ -40,6 +44,11 @@ namespace DataLinkApplicationTools
            
 
         }
+        /// <summary>
+        /// 线程执行方法，此方法调用PublicTools中的SwitchDataBase以在线程中还原数据库。
+        /// 并使用context.send 更新UI
+        /// </summary>
+        /// <param name="sx"></param>
         private void  ResDB(object sx)
         {
             SynchronizationContext uicon = sx as SynchronizationContext;
@@ -53,7 +62,10 @@ namespace DataLinkApplicationTools
             uicon.Send(FlashUI, pt.sql_Result);
             uicon.Send(FlashUI, "wooooooooooow!");
         }
-
+        /// <summary>
+        /// 线程回调方法。
+        /// </summary>
+        /// <param name="str">线程执行的结果</param>
        private void FlashUI(object str)
         {
             string text = str as string;
